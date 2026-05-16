@@ -1,9 +1,2 @@
-openai-agents
-resend
-python-dotenv
-RealtimeSTT
-fastapi
-uvicorn[standard]
-python-multipart
-itsdangerous
-email-validator
+# Default: web app. For local CLI + mic, use: pip install -r requirements-local.txt
+-r requirements-web.txt

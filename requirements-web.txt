@@ -1,0 +1,9 @@
+# Web deploy only (Render/Railway/Docker). No microphone/native audio deps.
+openai-agents
+resend
+python-dotenv
+fastapi
+uvicorn[standard]
+python-multipart
+itsdangerous
+email-validator

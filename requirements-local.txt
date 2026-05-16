@@ -1,0 +1,3 @@
+# Local CLI only (panic_agent.py). Do not install on cloud hosts.
+-r requirements-web.txt
+RealtimeSTT
