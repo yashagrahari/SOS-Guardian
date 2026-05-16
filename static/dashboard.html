@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SOS Guardian — Live Monitor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="shell" id="app">
+    <header>
+      <div class="logo">
+        <div class="logo-icon">🛡</div>
+        <div>
+          <h1>SOS Guardian</h1>
+          <p>Live conversation monitor</p>
+        </div>
+      </div>
+      <div class="user-pill">
+        <span id="user-email">…</span>
+        <button type="button" class="btn-ghost" id="logout-btn">Sign out</button>
+      </div>
+    </header>
+
+    <div class="card status-card" id="status-card">
+      <div class="status-indicator">
+        <div class="status-dot" id="status-dot"></div>
+        <div>
+          <strong id="status-title">Monitoring</strong>
+          <p class="mic-hint" id="status-subtitle">Listening for distress in conversation</p>
+        </div>
+      </div>
+      <span class="badge" id="buffer-badge">0 / 3 utterances</span>
+    </div>
+
+    <div class="dashboard-grid">
+      <div class="card mic-section">
+        <button type="button" class="mic-btn" id="mic-btn" aria-label="Toggle microphone">🎤</button>
+        <p class="mic-hint" id="mic-label">Click to start listening</p>
+        <div class="demo-row">
+          <p>Demo phrases (no mic needed):</p>
+          <div class="demo-chips">
+            <button type="button" class="chip" data-demo="Nice weather today.|Just grabbing coffee.|Everything feels normal.">Safe</button>
+            <button type="button" class="chip" data-demo="I don't feel well.|My chest really hurts.|Someone please help me right now.">Emergency</button>
+            <button type="button" class="chip" data-demo="I smell smoke.|There's fire on our floor.|We need to evacuate immediately.">Fire</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Live transcript</h3>
+        <ul class="transcript-list" id="transcript-list"></ul>
+      </div>
+
+      <div class="card" style="grid-column: 1 / -1;">
+        <h3>Agent response</h3>
+        <div class="agent-output empty" id="agent-output">Waiting for analysis…</div>
+        <div id="email-badge" hidden></div>
+      </div>
+    </div>
+  </div>
+  <script src="/static/app.js"></script>
+</body>
+</html>

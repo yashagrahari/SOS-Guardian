@@ -1,0 +1,9 @@
+openai-agents
+resend
+python-dotenv
+RealtimeSTT
+fastapi
+uvicorn[standard]
+python-multipart
+itsdangerous
+email-validator

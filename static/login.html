@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SOS Guardian — Sign in</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="shell">
+    <header>
+      <div class="logo">
+        <div class="logo-icon">🛡</div>
+        <div>
+          <h1>SOS Guardian</h1>
+          <p>AI-powered emergency listener</p>
+        </div>
+      </div>
+    </header>
+
+    <div class="card login-card">
+      <h2>Sign in to start</h2>
+      <p>Emergency alerts will be sent to your email when distress is detected in conversation.</p>
+      <form id="login-form">
+        <label for="email">Your email</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email" />
+        <button type="submit" class="btn-primary">Start monitoring</button>
+      </form>
+      <p class="error" id="login-error" aria-live="polite"></p>
+    </div>
+  </div>
+  <script>
+    const form = document.getElementById("login-form");
+    const errorEl = document.getElementById("login-error");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      errorEl.textContent = "";
+      const email = document.getElementById("email").value.trim();
+      try {
+        const res = await fetch("/api/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email }),
+        });
+        if (!res.ok) {
+          const data = await res.json().catch(() => ({}));
+          throw new Error(data.detail || "Login failed");
+        }
+        window.location.href = "/";
+      } catch (err) {
+        errorEl.textContent = err.message;
+      }
+    });
+  </script>
+</body>
+</html>
